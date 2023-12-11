@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Link from "next/link";
+import Image from "next/image";
+// import Link from "next/link";
 import type { NextPage } from "next";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+// import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { MetaHeader } from "~~/components/MetaHeader";
 
 const Home: NextPage = () => {
@@ -23,11 +24,18 @@ function OverviewSection() {
         <div className="row mt-4">
           <div className="col-md-4">
             <div className="img-logo">
-              <img src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi"></img>
+              {/* <img src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi" alt="img" /> */}
+              <Image
+                alt="img"
+                style={{ width: "100%" }}
+                width={0}
+                height={0}
+                src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi"
+              />
             </div>
           </div>
           <div className="col-md-8">
-            <h1 className="h3 main-title">Mainteanance Tracker Platform</h1>
+            <h1 className="h3 main-title">Maintenance Tracker Platform</h1>
             <h3 className="h5 subtitle">Revolutionizing Maintenance Operations on the Blockchain</h3>
             <p className="p-3">
               Welcome to MaintenanceTracker, your gateway to a cutting-edge decentralized solution for managing and
@@ -128,7 +136,14 @@ function MaintenanceTask() {
       </h5>
       <div className="col-md-2">
         <div className="img-nft">
-          <img src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi"></img>
+          {/* <img src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi" alt="img2" /> */}
+          <Image
+            alt="img2"
+            style={{ width: "100%" }}
+            width={0}
+            height={0}
+            src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi"
+          />
         </div>
       </div>
       <div className="col-md-10">
