@@ -1,7 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+@import "~bootstrap/dist/css/bootstrap.min.css";
+/*
 :root,
 [data-theme] {
   background: hsl(var(--b2));
@@ -29,4 +30,56 @@ p {
 
 .btn.btn-ghost {
   @apply shadow-none;
+}*/
+.red {
+  border: 1px solid red;
+}
+.green {
+  border: 1px solid green;
+}
+.img-logo {
+  height: 300px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-shadow: 5px 5px 11px -6px #000000;
+  box-shadow: 5px 5px 11px -6px #000000;
+}
+.img-nft {
+  height: 120px;
+  width: 120px;
+  -webkit-box-shadow: 5px 5px 5px 5px #000000;
+  box-shadow: 5px 5px px 5px #000000;
+}
+.main-title {
+  color: rgb(0, 255, 255);
+  margin-top: 30px;
+}
+.subtitle {
+  margin-bottom: 30px;
+}
+.wrapper {
+  background-color: white;
+  -webkit-box-shadow: 5px 5px 11px -6px #000000;
+  box-shadow: 5px 5px 11px -6px #000000;
+  border-radius: 10px;
+  min-height: 300px;
+  margin-top: 20px;
+  min-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  padding: 30px;
+}
+.borderTop {
+  border-top: 1px solid black;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.titleTask {
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+.tasklist > li {
+  padding-bottom: 10px;
 }
