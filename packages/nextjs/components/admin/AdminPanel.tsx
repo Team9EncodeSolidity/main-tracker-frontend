@@ -10,7 +10,12 @@ export function AdminPanel(params: any) {
       <div className="wrapper">
         <div className="d-none">{params.address}</div>
         <h4 className="h4 subtitle">Admin panel</h4>
-        <OpenMaintenanceTask></OpenMaintenanceTask>
+        <OpenMaintenanceTask
+          address={params.address}
+          url={params.url}
+          trackerContractAddress={params.trackerContractAddress}
+          trackerContractAbi={params.trackerContractAbi}
+        />
         <ExecuteTask></ExecuteTask>
         <CertifyTask></CertifyTask>
         <PayTask></PayTask>

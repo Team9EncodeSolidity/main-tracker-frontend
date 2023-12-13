@@ -63,7 +63,8 @@ const Home: NextPage = () => {
       {trackerContractAddress && <MaintenanceExplorer />}
       {address && trackerContractAddress && trackerContractAbi.length && (
         <AdminPanel
-          address={address}
+          address={address as `0x${string}`}
+          url={URL}
           trackerContractAddress={trackerContractAddress}
           trackerContractAbi={trackerContractAbi}
         />
@@ -74,7 +75,7 @@ const Home: NextPage = () => {
         tokenContractAddress &&
         tokenContractAbi.length && (
           <BuyTokens
-            address={address}
+            address={address as `0x${string}`}
             trackerContractAddress={trackerContractAddress}
             trackerContractAbi={trackerContractAbi}
             tokenContractAddress={tokenContractAddress}

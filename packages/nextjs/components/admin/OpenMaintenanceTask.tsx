@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-export function OpenMaintenanceTask() {
+export function OpenMaintenanceTask(params: any) {
+  // const [data, setData] = useState<{ result: boolean }>();
+  const [isLoading, setLoading] = useState(false);
+
   const [clientName, setClientName] = useState("");
   const [systemName, setSystemName] = useState("");
   const [systemCycles, setSystemCycles] = useState("");
   const [estimatedTime, setEstimatedTime] = useState("");
-  const [startingTime, setStartingTime] = useState("");
-  const [cost, setCost] = useState("");
+  // const [startingTime, setStartingTime] = useState("");
+  const [cost, setCost] = useState("1");
   const [repairman, setRepairman] = useState("");
   const [qualityInspector, setQualityInspector] = useState("");
 
@@ -15,7 +18,46 @@ export function OpenMaintenanceTask() {
 
     // Handle form submission logic here
     // You can access the form data using the state variables (clientName, systemName, etc.)
+
+    const startingTime = Math.floor(new Date().getTime() / 1000).toString();
+
+    const body = {
+      clientName: clientName,
+      systemName: systemName,
+      maintenanceName: "Navigation System Check",
+      systemCycles: systemCycles,
+      estimatedTime: estimatedTime,
+      startTime: startingTime,
+      cost: cost,
+      repairman: repairman,
+      qualityInspector: qualityInspector,
+    };
+
+    setLoading(true);
+    fetch(`${params.url}/open-task`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then(res => res.json())
+      .then(() => {
+        // setData(data);
+        setLoading(false);
+      });
+
+    if (isLoading) return <div className="row">Creating maintenance task…</div>;
+    // if (isError) return <div className="row">Error creating Maintenance task</div>;
+
+    setClientName("");
+    setSystemName("");
+    setSystemCycles("");
+    setEstimatedTime("");
+    // setStartingTime("");
+    setCost("1");
+    setRepairman("");
+    setQualityInspector("");
   };
+
   return (
     <>
       <div className="row">
@@ -59,7 +101,7 @@ export function OpenMaintenanceTask() {
                 />
               </li>
               <li>
-                <strong>Estimated Time:</strong>
+                <strong>Estimated Time (days):</strong>
                 <input
                   type="text"
                   className="form-control"
@@ -69,7 +111,7 @@ export function OpenMaintenanceTask() {
                   onChange={e => setEstimatedTime(e.target.value)}
                 />
               </li>
-              <li>
+              {/* <li>
                 <strong>Starting Time:</strong>
                 <input
                   type="text"
@@ -79,7 +121,7 @@ export function OpenMaintenanceTask() {
                   value={startingTime}
                   onChange={e => setStartingTime(e.target.value)}
                 />
-              </li>
+              </li> */}
               <li>
                 <strong>Cost (tokens):</strong>
                 <input
