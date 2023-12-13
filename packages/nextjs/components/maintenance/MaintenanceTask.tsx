@@ -45,7 +45,7 @@ export function MaintenanceTask() {
         return (
           <div className="row mt-3" key={task?.tokenId}>
             <h5 className="h5 borderTop">
-              <div className="titleTask">Task Id #0:</div>
+              <div className="titleTask">Task Id #{task?.tokenId}:</div>
               <div className="titleTask">
                 TaskGenStatus: {task?.genStatus} | TaxExecutionStatus: {task?.execStatus}
               </div>

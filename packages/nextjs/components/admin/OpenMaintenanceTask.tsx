@@ -45,7 +45,6 @@ export function OpenMaintenanceTask(params: any) {
         setLoading(false);
       });
 
-    if (isLoading) return <div className="row">Creating maintenance task…</div>;
     // if (isError) return <div className="row">Error creating Maintenance task</div>;
 
     setClientName("");
@@ -56,7 +55,13 @@ export function OpenMaintenanceTask(params: any) {
     setCost("1");
     setRepairman("");
     setQualityInspector("");
+
+    setTimeout(() => {
+      window.parent.location = window.parent.location.href;
+    }, 2000);
   };
+
+  if (isLoading) return <div className="row">Creating maintenance task…</div>;
 
   return (
     <>
