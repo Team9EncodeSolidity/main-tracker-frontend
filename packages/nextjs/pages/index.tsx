@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
+import { useAccount } from "wagmi";
 import { BuyTokens } from "~~/components/BuyTokens";
 // import { useState } from "react";
 // useEffect,
@@ -26,6 +27,8 @@ const Home: NextPage = () => {
   const [tokenContractAbi, setTokenContractAbi] = useState([]);
   const [trackerContractAddress, setTrackerContractAddress] = useState("");
   const [trackerContractAbi, setTrackerContractAbi] = useState([]);
+
+  const { address } = useAccount();
 
   useEffect(() => {
     async function fetchAllAbisAndAddresses() {
@@ -57,18 +60,27 @@ const Home: NextPage = () => {
     <>
       <MetaHeader />
       <OverviewSection />
-      <MaintenanceExplorer />
-      {trackerContractAddress && trackerContractAbi.length && (
-        <AdminPanel trackerContractAddress={trackerContractAddress} trackerContractAbi={trackerContractAbi} />
-      )}
-      {trackerContractAddress && trackerContractAbi.length && tokenContractAddress && tokenContractAbi.length && (
-        <BuyTokens
+      {trackerContractAddress && <MaintenanceExplorer />}
+      {address && trackerContractAddress && trackerContractAbi.length && (
+        <AdminPanel
+          address={address}
           trackerContractAddress={trackerContractAddress}
           trackerContractAbi={trackerContractAbi}
-          tokenContractAddress={tokenContractAddress}
-          tokenContractAbi={tokenContractAbi}
         />
       )}
+      {address &&
+        trackerContractAddress &&
+        trackerContractAbi.length &&
+        tokenContractAddress &&
+        tokenContractAbi.length && (
+          <BuyTokens
+            address={address}
+            trackerContractAddress={trackerContractAddress}
+            trackerContractAbi={trackerContractAbi}
+            tokenContractAddress={tokenContractAddress}
+            tokenContractAbi={tokenContractAbi}
+          />
+        )}
     </>
   );
 };

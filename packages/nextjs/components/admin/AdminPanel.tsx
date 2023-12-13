@@ -8,6 +8,7 @@ export function AdminPanel(params: any) {
   return (
     <>
       <div className="wrapper">
+        <div className="d-none">{params.address}</div>
         <h4 className="h4 subtitle">Admin panel</h4>
         <OpenMaintenanceTask></OpenMaintenanceTask>
         <ExecuteTask></ExecuteTask>
