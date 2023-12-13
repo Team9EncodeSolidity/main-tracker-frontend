@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function PayTask() {
+export function PayTask(params: any) {
   const [selectedTask, setSelectedTask] = useState(0);
 
   const handleTaskChange = (event: { target: { value: string } }) => {
@@ -13,6 +13,7 @@ export function PayTask() {
 
   return (
     <>
+      <div className="d-none">{params.address}</div>
       <div className="row">
         <h5 className="h5">
           <div className="titleTask borderTop mt-4">Pay Task (by the client)</div>

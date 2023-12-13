@@ -16,9 +16,21 @@ export function AdminPanel(params: any) {
           trackerContractAddress={params.trackerContractAddress}
           trackerContractAbi={params.trackerContractAbi}
         />
-        <ExecuteTask></ExecuteTask>
-        <CertifyTask></CertifyTask>
-        <PayTask></PayTask>
+        <ExecuteTask
+          address={params.address}
+          trackerContractAddress={params.trackerContractAddress}
+          trackerContractAbi={params.trackerContractAbi}
+        />
+        <CertifyTask
+          address={params.address}
+          trackerContractAddress={params.trackerContractAddress}
+          trackerContractAbi={params.trackerContractAbi}
+        />
+        <PayTask
+          address={params.address}
+          trackerContractAddress={params.trackerContractAddress}
+          trackerContractAbi={params.trackerContractAbi}
+        />
       </div>
     </>
   );

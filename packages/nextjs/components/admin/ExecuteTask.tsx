@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function ExecuteTask() {
+export function ExecuteTask(params: any) {
   const [selectedTask, setSelectedTask] = useState(0);
 
   const handleTaskChange = (event: { target: { value: string } }) => {
@@ -13,6 +13,7 @@ export function ExecuteTask() {
 
   return (
     <>
+      <div className="d-none">{params.address}</div>
       <div className="row">
         <h5 className="h5">
           <div className="titleTask borderTop mt-4">Execute and sign task ( by the repairman)</div>
