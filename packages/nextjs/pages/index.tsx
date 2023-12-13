@@ -129,7 +129,22 @@ function AdminPanel() {
 }
 
 function MaintenanceTask() {
-  const [data, setData] = useState<{ result: object[] }>();
+  interface taskObject {
+    tokenId: string;
+    clientName: string;
+    systemName: string;
+    maintenanceName: string;
+    systemCycles: string;
+    estimatedTime: string;
+    startTime: any;
+    taskCost: string;
+    genStatus: string;
+    execStatus: string;
+    repairman: string;
+    qualityInspector: string;
+  }
+
+  const [data, setData] = useState<{ result: taskObject[] }>();
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -144,7 +159,7 @@ function MaintenanceTask() {
   if (isLoading) return <p>Loading Task List...</p>;
   if (!data) return <p>No tasks yet</p>;
 
-  const taskList = data.result;
+  const taskList: taskObject[] = data.result;
 
   if (typeof taskList != "undefined" && taskList?.length < 1) return <p>No tasks yet</p>;
 
@@ -155,8 +170,8 @@ function MaintenanceTask() {
       </h5>
       {taskList?.map(task => {
         return (
-          <div key={Math.random()}>
-            <div>{JSON.stringify(task)}</div>
+          <div key={task?.tokenId}>
+            {/* <div>{JSON.stringify(task)}</div> */}
             <div className="col-md-2">
               <div className="img-nft">
                 {/* <img src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi" alt="img2" /> */}
@@ -172,31 +187,34 @@ function MaintenanceTask() {
             <div className="col-md-10">
               <ul className="p-2 tasklist">
                 <li>
-                  <strong>Task Id:</strong> 0
+                  <strong>Task Id:</strong> {task?.tokenId}
                 </li>
                 <li>
-                  <strong>Client Name:</strong> John
+                  <strong>Client Name:</strong> {task?.clientName}
                 </li>
                 <li>
-                  <strong>System Name:</strong> Airplane
+                  <strong>Type of Service:</strong> {task?.maintenanceName}
                 </li>
                 <li>
-                  <strong>System Cycles:</strong> 1000
+                  <strong>System Name:</strong> {task?.systemName}
                 </li>
                 <li>
-                  <strong>Estimated Time:</strong> 3 days
+                  <strong>System Cycles:</strong> {task?.systemCycles}
                 </li>
                 <li>
-                  <strong>Starting Time:</strong> 1 day
+                  <strong>Estimated Time:</strong> {task?.estimatedTime} days
                 </li>
                 <li>
-                  <strong>Cost (tokens):</strong> 1
+                  <strong>Starting Time:</strong> {new Date(task?.startTime * 1000).toUTCString()}
                 </li>
                 <li>
-                  <strong>Repairman (engineer):</strong> 0xa...
+                  <strong>Cost (tokens):</strong> {task?.taskCost}
                 </li>
                 <li>
-                  <strong>Quality Inspector (engineer):</strong> 0xa...
+                  <strong>Repairman (engineer):</strong> {task?.repairman}
+                </li>
+                <li>
+                  <strong>Quality Inspector (engineer):</strong> {task?.qualityInspector}
                 </li>
               </ul>
             </div>
