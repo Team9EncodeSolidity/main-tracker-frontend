@@ -44,9 +44,11 @@ export function MaintenanceTask() {
       {taskList?.map((task: taskObject) => {
         return (
           <div className="row mt-3" key={task?.tokenId}>
-            {/* {JSON.stringify(task)} */}
             <h5 className="h5 borderTop">
-              <div className="titleTask">Task Id #0 | {task?.genStatus}</div>
+              <div className="titleTask">Task Id #0:</div>
+              <div className="titleTask">
+                TaskGenStatus: {task?.genStatus} | TaxExecutionStatus: {task?.execStatus}
+              </div>
             </h5>
             {/* <small>
               <div style={{ width: "300px" }}>

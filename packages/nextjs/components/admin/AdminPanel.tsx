@@ -3,7 +3,8 @@ import { ExecuteTask } from "./ExecuteTask";
 import { OpenMaintenanceTask } from "./OpenMaintenanceTask";
 import { PayTask } from "./PayTask";
 
-export function AdminPanel() {
+export function AdminPanel(params: any) {
+  console.log(JSON.stringify(params));
   return (
     <>
       <div className="wrapper">
