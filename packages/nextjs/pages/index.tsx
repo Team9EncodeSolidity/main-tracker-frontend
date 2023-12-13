@@ -9,10 +9,10 @@ const Home: NextPage = () => {
   return (
     <>
       <MetaHeader />
-      <OverviewSection></OverviewSection>
-      <MaintenanceExplorer></MaintenanceExplorer>
-      <AdminPanel></AdminPanel>
-      <BuyTokens></BuyTokens>
+      <OverviewSection />
+      <MaintenanceExplorer />
+      <AdminPanel />
+      <BuyTokens />
     </>
   );
 };
@@ -24,7 +24,6 @@ function OverviewSection() {
         <div className="row mt-4">
           <div className="col-md-4">
             <div className="img-logo">
-              {/* <img src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi" alt="img" /> */}
               <Image
                 alt="img"
                 style={{ width: "100%" }}
@@ -153,13 +152,13 @@ function MaintenanceTask() {
       <h5 className="h5 borderTop">
         <div className="titleTask">Task Id #0 | Status</div>
       </h5>
-      {taskList?.map(task => {
+      {taskList?.map((task: any) => {
         return (
           <div key={Math.random()}>
             <div>{JSON.stringify(task)}</div>
+            <b>ID: {task.tokenId}</b>
             <div className="col-md-2">
               <div className="img-nft">
-                {/* <img src="https://ipfs.io/ipfs/bafybeifj3wz462zils26mztyepwfzhxlxe557k3sptm3yfcplorw7xlpoi" alt="img2" /> */}
                 <Image
                   alt="img2"
                   style={{ width: "100%" }}
@@ -206,6 +205,7 @@ function MaintenanceTask() {
     </div>
   );
 }
+
 function OpenMaintenanceTask() {
   const [clientName, setClientName] = useState("");
   const [systemName, setSystemName] = useState("");
@@ -330,6 +330,7 @@ function OpenMaintenanceTask() {
     </>
   );
 }
+
 function ExecuteTask() {
   const [selectedTask, setSelectedTask] = useState(0);
 
@@ -369,6 +370,7 @@ function ExecuteTask() {
     </>
   );
 }
+
 function CertifyTask() {
   const [selectedTask, setSelectedTask] = useState(0);
 
@@ -448,6 +450,7 @@ function PayTask() {
     </>
   );
 }
+
 function BuyTokens() {
   const handleButtonClick = () => {
     // Handle button click logic here
