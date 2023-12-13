@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { BuyTokens } from "~~/components/BuyTokens";
+import { BuyTokensAndApprove } from "~~/components/BuyTokensAndApprove";
 // import { useState } from "react";
 // useEffect,
 // import Image from "next/image";
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
         <AdminPanel trackerContractAddress={trackerContractAddress} trackerContractAbi={trackerContractAbi} />
       )}
       {trackerContractAddress && trackerContractAbi.length && tokenContractAddress && tokenContractAbi.length && (
-        <BuyTokens
+        <BuyTokensAndApprove
           trackerContractAddress={trackerContractAddress}
           trackerContractAbi={trackerContractAbi}
           tokenContractAddress={tokenContractAddress}
