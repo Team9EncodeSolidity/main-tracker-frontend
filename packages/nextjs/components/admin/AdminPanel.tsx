@@ -28,6 +28,7 @@ export function AdminPanel(params: any) {
         />
         <PayTask
           address={params.address}
+          url={params.url}
           trackerContractAddress={params.trackerContractAddress}
           trackerContractAbi={params.trackerContractAbi}
         />

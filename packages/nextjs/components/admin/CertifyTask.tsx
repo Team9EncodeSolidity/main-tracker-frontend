@@ -1,14 +1,48 @@
 import { useState } from "react";
+import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 
 export function CertifyTask(params: any) {
   const [selectedTask, setSelectedTask] = useState(0);
+
+  const {
+    config: config,
+    error: prepareError,
+    isError: isPrepareError,
+  } = usePrepareContractWrite({
+    address: `${params.trackerContractAddress}`,
+    abi: params.trackerContractAbi,
+    functionName: "certifyTask",
+    args: [selectedTask.toString()],
+    enabled: true,
+  });
+
+  const { data: data, error: error, isError: isError, write: write } = useContractWrite(config);
+  const { isLoading: isLoading, isSuccess: isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  if (isPrepareError) {
+    console.log(`PrepareError: ${prepareError?.message}`);
+  }
+  if (isError) {
+    console.log(`Error: ${error?.message}`);
+  }
+  if (isLoading) console.log("Executing maintenance task");
+  if (isSuccess) {
+    console.log("Execute task successful");
+    setTimeout(() => {
+      window.parent.location = window.parent.location.href;
+    }, 2000);
+  }
 
   const handleTaskChange = (event: { target: { value: string } }) => {
     setSelectedTask(parseInt(event.target.value, 10));
   };
 
-  const handleCertifyTask = () => {
-    // some code here for certifying the task
+  const handleCertifyTask = (e: any) => {
+    e.preventDefault();
+    console.log(`Selected task: ${selectedTask.toString()}`);
+    write?.();
   };
 
   return (

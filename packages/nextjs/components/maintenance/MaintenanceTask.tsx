@@ -33,11 +33,11 @@ export function MaintenanceTask() {
   }, []);
 
   if (isLoading) return <p>Loading Task List...</p>;
-  if (!data) return <p>No tasks yet</p>;
+  if (!data) return <p>No tasks yet...</p>;
 
   const taskList: taskObject[] = data.result;
 
-  if (typeof taskList != "undefined" && taskList?.length < 1) return <p>No tasks yet</p>;
+  if (typeof taskList != "undefined" && taskList?.length < 1) return <p>No tasks yet..</p>;
 
   return (
     <>

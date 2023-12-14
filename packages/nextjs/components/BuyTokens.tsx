@@ -1,10 +1,6 @@
-import { useState } from "react";
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 
 export function BuyTokens(params: any) {
-  // const [buy, setBuyEnabled] = useState(true);
-  const [approve, setAprEnabled] = useState(false);
-
   const amount = "1000000000000000000";
 
   const {
@@ -55,11 +51,8 @@ export function BuyTokens(params: any) {
   });
 
   const approveSpend = async () => {
-    if (!approve) {
-      setAprEnabled(true);
-      console.log("Approving");
-      write_Apr?.();
-    }
+    console.log("Approving");
+    write_Apr?.();
   };
 
   if (isPrepareError_Buy) {
@@ -87,10 +80,8 @@ export function BuyTokens(params: any) {
   }
 
   const handlePayTask = (e: any) => {
-    // some code here for paying the task
     e.preventDefault();
     console.log("Entro");
-    setAprEnabled(false);
     write_Buy?.();
   };
 
@@ -98,7 +89,7 @@ export function BuyTokens(params: any) {
     <div style={{ position: "fixed", bottom: 60, right: 100, zIndex: 1000 }}>
       {/* <div className="d-none">{params.trackerContractAddress}</div> */}
       <button className="btn btn-primary" onClick={handlePayTask}>
-        {isLoading_Buy || isLoading_Apr ? "Buying..." : "Buy+Approve use of Tokens"}
+        {isLoading_Buy || isLoading_Apr ? "Buying..." : "Buy+Approve Tokens"}
         {/* {isLoading ? "Buying..." : "Buy+Approve use of Tokens"} */}
       </button>
     </div>
